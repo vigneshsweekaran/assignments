@@ -63,8 +63,8 @@ resource "aws_elasticache_cluster" "example" {
 }
 
 # SG for EC2 instances 
-resource "aws_security_group" "sg-instances" {
-  name        = local.Name
+resource "aws_security_group" "sg-instance" {
+  name        = "instances-sg"
   description = "Load balancer security group"
   vpc_id      = module.vpc.vpc_id
   
@@ -73,7 +73,7 @@ resource "aws_security_group" "sg-instances" {
     from_port   = 80
     to_port     = 80
     protocol    = "tcp"
-    cidr_blocks = [aws_security_group.sg-alb]
+    security_groups = [aws_security_group.sg-alb.id]
   }
 
   # Allow all outbound traffic.
@@ -93,23 +93,55 @@ resource "aws_security_group" "sg-instances" {
 }
 
 # EC2 Instance in private subnet
-resource "aws_instance" "instances" {
-  count = 2
-  subnet_id = module.vpc.private_subnet_ids[count.index]
-	ami = "ami-0d70546e43a941d70"
-	instance_type = "t2.micro"
-  user_data = "${file("init.sh")}"
-	tags = merge(
-    var.tags,
-    {
-      Name = "${local.Name}-${count.index}"
-    }
-  )
+# resource "aws_instance" "instances" {
+#   count = 2
+#   subnet_id = module.vpc.private_subnet_ids[count.index]
+# 	ami = "ami-0d70546e43a941d70"
+# 	instance_type = "t2.micro"
+#   user_data = "${file("init.sh")}"
+# 	tags = merge(
+#     var.tags,
+#     {
+#       Name = "${local.Name}-${count.index}"
+#     }
+#   )
+# }
+
+data "aws_ami" "ubuntu" {
+  most_recent = true
+  owners      = ["amazon"]
+
+  filter {
+    name   = "name"
+    values = ["ubuntu/images/hvm-ssd/ubuntu-jammy-22.04-amd64-server-*"]
+  }
+}
+
+# EC2 Launch Configuration
+resource "aws_launch_configuration" "web-application" {
+  name_prefix     = "${local.Name}-"
+  image_id        = data.aws_ami.ubuntu.id
+  instance_type   = "t2.micro"
+  user_data       = file("init.sh")
+  security_groups = [aws_security_group.sg-instance.id]
+
+  lifecycle {
+    create_before_destroy = true
+  }
+}
+
+# Auto Scaling group
+resource "aws_autoscaling_group" "web-application" {
+  min_size             = 1
+  max_size             = 3
+  desired_capacity     = 1
+  launch_configuration = aws_launch_configuration.web-application.name
+  vpc_zone_identifier  = module.vpc.private_subnet_ids
 }
 
 # SG for AWS load balancer
 resource "aws_security_group" "sg-alb" {
-  name        = local.Name
+  name        = "alb-sg"
   description = "Load balancer security group"
   vpc_id      = module.vpc.vpc_id
 
@@ -137,7 +169,7 @@ resource "aws_security_group" "sg-alb" {
 }
 
 # AWS load balancer - public
-resource "aws_alb" "alb" {
+resource "aws_alb" "web-application" {
   name            = local.Name
   security_groups = ["${aws_security_group.sg-alb.id}"]
   subnets         = module.vpc.public_subnet_ids
@@ -149,7 +181,7 @@ resource "aws_alb" "alb" {
   )
 }
 
-resource "aws_alb_target_group" "group" {
+resource "aws_alb_target_group" "web-application" {
   name     = local.Name
   port     = 80
   protocol = "HTTP"
@@ -165,12 +197,17 @@ resource "aws_alb_target_group" "group" {
 }
 
 resource "aws_alb_listener" "listener_http" {
-  load_balancer_arn = aws_alb.alb.arn
+  load_balancer_arn = aws_alb.web-application.arn
   port              = "80"
   protocol          = "HTTP"
 
   default_action {
-    target_group_arn = "${aws_alb_target_group.group.arn}"
+    target_group_arn = "${aws_alb_target_group.web-application.arn}"
     type             = "forward"
   }
+}
+
+resource "aws_autoscaling_attachment" "web-application" {
+  autoscaling_group_name = aws_autoscaling_group.web-application.id
+  alb_target_group_arn   = aws_alb_target_group.web-application.arn
 }
