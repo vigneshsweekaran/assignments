@@ -4,8 +4,10 @@ import datetime
 import os
 from botocore.exceptions import ClientError
 import logging
+import json
 
 bucket_name = os.environ['BUCKET_NAME']
+sns_topic_arn = os.environ['SNS_TOPIC_ARN']
 
 required_tags = ["Data", "Processing", "Web"]
 header = ['Id', 'Name', 'State', 'Type', 'Image-id']
@@ -34,10 +36,10 @@ def ec2_instance_details(event, context):
                 service_tag = None
         if state == "running" and service_tag == None and service_tag not in required_tags:
             data.append([id,name,state,type,image])
-   if data:
-     create_csv_file(data)
-     publish_to_s3()
-     notify()
+    if data:
+      create_csv_file(data)
+      publish_to_s3()
+      notify_sns()
 
 def create_csv_file(data):
     with open(file_path, 'w', encoding='UTF8', newline='') as f:
@@ -53,3 +55,11 @@ def publish_to_s3():
         response = s3.upload_file(file_path, bucket_name, file_name)
     except ClientError as e:
         logging.error(e)
+        
+def notify_sns():
+    client = boto3.client('sns')
+    response = client.publish (
+       TargetArn = sns_topic_arn,
+       Message = json.dumps({'Message': "Some EC2 Instances are not having service tag or dosen't match of Data, Processin or Web"}),
+       MessageStructure = 'json'
+    )

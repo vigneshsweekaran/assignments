@@ -43,6 +43,11 @@ resource "aws_s3_object" "ec2_instance_details" {
   etag = filemd5(data.archive_file.ec2_instance_details.output_path)
 }
 
+# SNS topic for alerting/sending mails
+resource "aws_sns_topic" "ec2_instance_details" {
+  name = "ec2-instance-details"
+}
+
 # Lambda function
 resource "aws_lambda_function" "ec2_instance_details" {
   function_name = "Ec2InstanceDetails"
@@ -62,6 +67,7 @@ resource "aws_lambda_function" "ec2_instance_details" {
   environment {
     variables = {
       BUCKET_NAME = aws_s3_bucket.ec2_instance_details_destination.bucket
+      SNS_TOPIC_ARN = aws_sns_topic.ec2_instance_details.arn
     }
   }
 }
@@ -101,7 +107,6 @@ data "aws_iam_policy_document" "ec2_instance_details" {
     actions = [
       "ec2:*",
     ]
-
     resources = [
       "*",
     ]
@@ -111,9 +116,17 @@ data "aws_iam_policy_document" "ec2_instance_details" {
     actions = [
       "s3:PutObject",
     ]
-
     resources = [
       "arn:aws:s3:::${aws_s3_bucket.ec2_instance_details_destination.bucket}/*",
+    ]
+  }
+  statement {
+    effect = "Allow"
+    actions = [
+      "sns:Publish",
+    ]
+    resources = [
+      "${aws_sns_topic.ec2_instance_details.arn}",
     ]
   }
 }
