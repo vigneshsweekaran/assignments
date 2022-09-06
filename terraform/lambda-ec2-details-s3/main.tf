@@ -1,10 +1,10 @@
 # Source and destination s3 bucket
 resource "aws_s3_bucket" "ec2_instance_details_source" {
-  bucket_prefix = "ec2_instance_details_source"
+  bucket_prefix = "ec2-instance-details-source"
 }
 
 resource "aws_s3_bucket" "ec2_instance_details_destination" {
-  bucket_prefix = "ec2_instance_details_destination"
+  bucket_prefix = "ec2-instance-details-destination"
 }
 
 resource "aws_s3_bucket_acl" "bucket_acl_source" {
@@ -43,7 +43,7 @@ resource "aws_lambda_function" "ec2_instance_details" {
   s3_key    = aws_s3_object.ec2_instance_details.key
 
   runtime = "python3.9"
-  handler = "ec2-instance-details.handler"
+  handler = "ec2-instance-details.ec2_instance_details"
 
   source_code_hash = data.archive_file.ec2_instance_details.output_base64sha256
 
@@ -79,7 +79,17 @@ resource "aws_iam_role_policy_attachment" "ec2_instance_details_source" {
 }
 
 # Policy for pushing csv files to destination s3 bucket
-data "aws_iam_policy_document" "ec2_instance_details_s3_write_access" {
+data "aws_iam_policy_document" "ec2_instance_details" {
+  statement {
+    effect = "Allow"
+    actions = [
+      "ec2:*",
+    ]
+
+    resources = [
+      "*",
+    ]
+  }
   statement {
     effect = "Allow"
     actions = [
@@ -92,13 +102,13 @@ data "aws_iam_policy_document" "ec2_instance_details_s3_write_access" {
   }
 }
 
-resource "aws_iam_policy" "ec2_instance_details_s3_write_access" {
-  name   = "Ec2InstanceDetailsS3WriteAccess"
+resource "aws_iam_policy" "ec2_instance_details" {
+  name   = "Ec2InstanceDetails"
   path   = "/"
-  policy = data.aws_iam_policy_document.ec2_instance_details_s3_write_access.json
+  policy = data.aws_iam_policy_document.ec2_instance_details.json
 }
 
-resource "aws_iam_role_policy_attachment" "ec2_instance_details_destination" {
+resource "aws_iam_role_policy_attachment" "ec2_instance_details_custom" {
   role       = aws_iam_role.ec2_instance_details.name
-  policy_arn = aws_iam_policy.ec2_instance_details_s3_write_access.arn
+  policy_arn = aws_iam_policy.ec2_instance_details.arn
 }

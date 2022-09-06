@@ -13,7 +13,7 @@ one of ["Data", "Processing", "Web"]
 terraform plan
 
 ### Terraform apply
-terraform apply
+terraform apply --auto-approve
 
 ### Terraform destroy
-terraform destroy
+terraform destroy --auto-approve
