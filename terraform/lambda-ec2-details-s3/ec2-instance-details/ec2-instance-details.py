@@ -60,6 +60,6 @@ def notify_sns():
     client = boto3.client('sns')
     response = client.publish (
        TargetArn = sns_topic_arn,
-       Message = json.dumps({'Message': "Some EC2 Instances are not having service tag or dosen't match of Data, Processin or Web"}),
+       Message = json.dumps({'default': "Some EC2 Instances are not having service tag or dosen't match of Data, Processin or Web"}),
        MessageStructure = 'json'
     )
