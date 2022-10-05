@@ -9,3 +9,9 @@ variable "aws_profile" {
   description = "AWS profile name"
   default = "test"
 }
+
+variable "reg_token" {
+  type = string
+  description = "Gitlab cicd registration token"
+  sensitive = true
+}

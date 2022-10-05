@@ -55,6 +55,11 @@ resource "aws_instance" "gitlab-runner" {
   }
 }
 
+resource "local_file" "playbbok" {
+  content = templatefile("playbook.yaml.tftpl", { reg_token = "${var.reg_token}" })
+  filename = "${path.module}/playbook.yaml"
+}
+
 resource "null_resource" "ansible-install-gitlab-runner" {
 
   triggers = {

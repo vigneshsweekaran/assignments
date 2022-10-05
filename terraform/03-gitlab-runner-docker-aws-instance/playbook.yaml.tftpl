@@ -67,10 +67,10 @@
         gitlab-runner register \
         --non-interactive \
         --url "https://gitlab.com/" \
-        --registration-token "{{ reg_token }}" \
+        --registration-token "${reg_token}" \
         --executor "docker" \
         --docker-image alpine:latest \
-        --description "docker-runner" \
+        --description "test-docker-runner" \
         --tag-list "test-docker" \
         --run-untagged="false" \
         --locked="true"

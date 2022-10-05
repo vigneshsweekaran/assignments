@@ -18,11 +18,16 @@ ssh-keygen
 * Run the following terrform commands to initialize, create the resources and register the gitlab runner
 ```
 terraform init
-terraform plan
-terraform apply --auto-approve
+terraform plan \
+  -var=reg_token="xxxxxxxxxxx"
+terraform apply --auto-approve \
+  -var=reg_token="xxxxxxxxxxx"
+
+where xxxxxxxx = Gitlab runner registration token
 ```
 
 * To destroy the created resources
 ```
-terraform destroy --auto-approve
+terraform destroy --auto-approve \
+  -var=reg_token="xxxxxxxxxxx"
 ```
