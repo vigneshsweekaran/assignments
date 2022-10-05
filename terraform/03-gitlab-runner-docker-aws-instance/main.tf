@@ -5,23 +5,13 @@ locals {
 
 data "aws_region" "current" {}
 
-data "aws_ami" "amazonlinux2" {
+data "aws_ami" "ubuntu" {
   most_recent = true
   owners      = ["amazon"]
 
   filter {
     name   = "name"
-    values = ["amzn2-ami-hvm-*-gp2"]
-  }
-
-  filter {
-    name   = "architecture"
-    values = ["x86_64"]
-  }
-
-  filter {
-    name   = "root-device-type"
-    values = ["ebs"]
+    values = ["ubuntu/images/hvm-ssd/ubuntu-jammy-22.04-amd64-server-*"]
   }
 }
 
@@ -56,7 +46,7 @@ resource "aws_security_group" "gitlab-runner" {
 
 resource "aws_instance" "gitlab-runner" {
   instance_type          = "t2.medium"
-  ami                    = data.aws_ami.amazonlinux2.id
+  ami                    = data.aws_ami.ubuntu.id
   vpc_security_group_ids = [aws_security_group.gitlab-runner.id]
   key_name               = local.key_name
 
@@ -76,7 +66,7 @@ resource "null_resource" "ansible-install-gitlab-runner" {
 
     connection {
       type        = "ssh"
-      user        = "ec2-user"
+      user        = "ubuntu"
       private_key = file(local.private_key_path)
       host        = aws_instance.gitlab-runner.public_ip
     }

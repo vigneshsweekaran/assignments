@@ -1,38 +1,76 @@
 ---
 - name: Install Gitlab runner
   hosts: all
-  remote_user: ec2-user
+  remote_user: ubuntu
   become: true
 
   tasks:
-    - name: Update all packages
-      yum:
-        name: '*'
-        state: latest
-        update_only: yes
+    - name: Remove old docker
+      ansible.builtin.apt:
+        name: "{{ packages }}"
+        state: absent
+      vars:
+        packages:
+          - docker
+          - docker-engine
+          - docker.io
+          - containerd
+          - runc
 
-    - name: Installing packages
-      yum:
+    - name: Update all packages to their latest version
+      ansible.builtin.apt:
+        name: "*"
+        state: latest
+
+    - name: Installing dependency packages
+      apt:
         name: "{{ packages }}"
         state: latest
         update_cache: yes
       vars:
         packages:
-          - yum-utils
+          - ca-certificates
+          - curl
+          - gnupg
+          - lsb-release
 
-    - name: Adding docker repository
-      ansible.builtin.yum_repository:
-        name: docker
-        description: Docker repo
-        baseurl: https://download.docker.com/linux/centos/docker-ce.repo
+    - name: Add Docker apt key.
+      ansible.builtin.get_url:
+        url: "https://download.docker.com/linux/ubuntu/gpg"
+        dest: /etc/apt/trusted.gpg.d/docker.asc
+        mode: '0644'
+        force: true
 
-    - name: Installing Docker
-      yum:
-        name: "{{ packages }}"
-        state: latest
+    - name: Add docker repo
+      apt_repository:
+        repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable"
+        state: present
         update_cache: yes
-      vars:
-        packages:
-          - docker-ce
-          - docker-ce-cli
+
+    - name: Install docker
+      apt:
+        name:
+          - docker-ce 
+          - docker-ce-cli 
           - containerd.io
+        state: present
+
+    - name: Install gitlab runner
+      shell: |
+        curl -LJO https://gitlab-runner-downloads.s3.amazonaws.com/latest/deb/gitlab-runner_amd64.deb
+        dpkg -i gitlab-runner_amd64.deb
+      args:
+        creates: /usr/bin/gitlab-runner
+
+    - name: Register gitlab docker runner
+      command: |
+        gitlab-runner register \
+        --non-interactive \
+        --url "https://gitlab.com/" \
+        --registration-token "{{ reg_token }}" \
+        --executor "docker" \
+        --docker-image alpine:latest \
+        --description "docker-runner" \
+        --tag-list "test-docker" \
+        --run-untagged="false" \
+        --locked="true"

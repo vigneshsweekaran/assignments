@@ -6,6 +6,8 @@
 ### Installation steps
 * Update the values in terraform.tfvars file
 
+* Configure the aws credentials in profile test
+
 * Make sure ssh keys are generated in ~/.ssh, which is used for craeting key_pair and connecting to aws instance for running the ansible playbook
 
 * To generate ssh keys
