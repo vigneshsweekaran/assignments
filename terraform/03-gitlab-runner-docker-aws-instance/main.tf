@@ -56,7 +56,7 @@ resource "aws_instance" "gitlab-runner" {
 }
 
 resource "local_file" "playbbok" {
-  content = templatefile("playbook.yaml.tftpl", { reg_token = "${var.reg_token}" })
+  content = templatefile("playbook.yaml.tftpl", { runner_version = "${var.runner_version}", runner_token = "${var.runner_token}", runner_tag = "${var.runner_tag}" })
   filename = "${path.module}/playbook.yaml"
 }
 

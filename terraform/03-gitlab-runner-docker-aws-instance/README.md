@@ -1,4 +1,4 @@
-## Terraform to create aws ec2 instance and install the Gitlab-runner and register it
+## Terraform to create aws ec2 instance and ansible to install the Gitlab-runner and registering it
 
 * Terraform scripts are used to create the aws EC2 instance
 * Ansible playbook is used to install and register the gitlab runner
@@ -19,9 +19,9 @@ ssh-keygen
 ```
 terraform init
 terraform plan \
-  -var=reg_token="xxxxxxxxxxx"
+  -var=runner_token="xxxxxxxxxxx"
 terraform apply --auto-approve \
-  -var=reg_token="xxxxxxxxxxx"
+  -var=runner_token="xxxxxxxxxxx"
 
 where xxxxxxxx = Gitlab runner registration token
 ```
@@ -29,5 +29,5 @@ where xxxxxxxx = Gitlab runner registration token
 * To destroy the created resources
 ```
 terraform destroy --auto-approve \
-  -var=reg_token="xxxxxxxxxxx"
+  -var=runner_token="xxxxxxxxxxx"
 ```

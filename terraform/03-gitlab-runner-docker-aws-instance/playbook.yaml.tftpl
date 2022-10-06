@@ -57,7 +57,7 @@
 
     - name: Install gitlab runner
       shell: |
-        curl -LJO https://gitlab-runner-downloads.s3.amazonaws.com/latest/deb/gitlab-runner_amd64.deb
+        curl -LJO https://gitlab-runner-downloads.s3.amazonaws.com/"${runner_version}"/deb/gitlab-runner_amd64.deb
         dpkg -i gitlab-runner_amd64.deb
       args:
         creates: /usr/bin/gitlab-runner
@@ -67,10 +67,10 @@
         gitlab-runner register \
         --non-interactive \
         --url "https://gitlab.com/" \
-        --registration-token "${reg_token}" \
+        --registration-token "${runner_token}" \
         --executor "docker" \
         --docker-image alpine:latest \
         --description "test-docker-runner" \
-        --tag-list "test-docker" \
+        --tag-list "${runner_tag}" \
         --run-untagged="false" \
         --locked="true"
