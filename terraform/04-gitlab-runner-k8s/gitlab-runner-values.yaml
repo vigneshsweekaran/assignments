@@ -1,0 +1,40 @@
+gitlabUrl: "https://gitlab.com/"
+runnerRegistrationToken: ""
+
+rbac:
+  create: true
+
+runners:
+  config: |
+    [[runners]]
+      [runners.kubernetes]
+        namespace = "{{.Release.Namespace}}"
+        image = "ubuntu:18.04"
+        privileged = true
+        cpu_request = "0.5"
+        cpu_limit = "0.5"
+        memory_request = "1Gi"
+        memory_limit = "1Gi"
+        service_cpu_request = "0.5"
+        service_cpu_limit = "0.5"
+        service_memory_request = "1Gi"
+        service_memory_limit = "1Gi"
+        helper_cpu_request = "0.5"
+        helper_cpu_limit = "0.5"
+        helper_memory_request = "1Gi"
+        helper_memory_limit = "1Gi"
+        poll_interval = 5
+        poll_timeout = 1800
+  tags: "${runner_tag}"
+  locked: true
+
+
+# Resources for runner pod
+resources:
+  limits:
+    memory: 1Gi
+    cpu: 0.5
+  requests:
+    memory: 1Gi
+    cpu: 0.5
+

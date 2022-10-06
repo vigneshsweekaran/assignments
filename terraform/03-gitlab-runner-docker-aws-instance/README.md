@@ -23,7 +23,7 @@ terraform init
 terraform plan \
   -var=runner_token="xxxxxxxxxxx"
 terraform apply --auto-approve \
-  -var=runner_token="xxxxxxxxxxx"
+  -var=runner_token="GR1348941g__9m3dYxGc7mqDrsQwa"
 
 where xxxxxxxx = Gitlab runner registration token
 ```
@@ -33,6 +33,9 @@ where xxxxxxxx = Gitlab runner registration token
 terraform destroy --auto-approve \
   -var=runner_token="xxxxxxxxxxx"
 ```
+
+### Pipeline Run
+https://gitlab.com/vigneshsweekaran/hello-world/-/pipelines/660294346
 
 ### Screenshots
 
