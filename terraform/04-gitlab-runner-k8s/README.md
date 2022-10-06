@@ -38,4 +38,4 @@ https://gitlab.com/vigneshsweekaran/hello-world/-/pipelines/660318491
 
 Gitlab runner configured
 
-![Gitlab runner configured](/terraform/03-gitlab-runner-docker-aws-instance/gitlab-runner-k8s.PNG)
+![Gitlab runner configured](/terraform/04-gitlab-runner-k8s/gitlab-runner-k8s.PNG)
