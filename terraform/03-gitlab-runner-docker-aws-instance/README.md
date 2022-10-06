@@ -37,4 +37,5 @@ terraform destroy --auto-approve \
 ### Screenshots
 
 Gitlab runner configured
+
 ![Gitlab runner configured](/terraform/03-gitlab-runner-docker-aws-instance/gitlab-runner-docker.PNG)
