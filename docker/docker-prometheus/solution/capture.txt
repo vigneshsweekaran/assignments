@@ -1,0 +1,252 @@
+Script started on 2022-11-25 10:59:15+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="121" LINES="17"]
+[?2004h[0;32m@vigneshsweekaran [0m➜ [1;34m.../assignments/docker/docker-prometheus/solution [0;36m([1;31mmain [1;33m✗[0;36m) [0m$ docker run -d [7minfracloudio/csvserver:lat[27m[7me[27m[7mst[27m[A[0;32m@vigneshsweekaran [0m➜ [1;34m.../assignments/docker/docker-prometheus/solution [0;36m([1;31mmain [1;33m✗[0;36m) [0m$ [C[C[C[C[C[C[C[C[C[C[C[C[C[Cinfracloudio/csvserver:latest 
+[?2004l3a65079a53c73cda13d03707333b499e883f6340e36eafabf9decac391166dfd
+[?2004h[0;32m@vigneshsweekaran [0m➜ [1;34m.../assignments/docker/docker-prometheus/solution [0;36m([1;31mmain [1;33m✗[0;36m) [0m$ docker ps
+[?2004lCONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+[?2004h[0;32m@vigneshsweekaran [0m➜ [1;34m.../assignments/docker/docker-prometheus/solution [0;36m([1;31mmain [1;33m✗[0;36m) [0m$ docker ps -a
+[?2004lCONTAINER ID   IMAGE                           COMMAND                  CREATED         STATUS                     PORTS     NAMES
+3a65079a53c7   infracloudio/csvserver:latest   "/csvserver/csvserver"   8 seconds ago   Exited (1) 6 seconds ago             recursing_mestorf
+[?2004h[0;32m@vigneshsweekaran [0m➜ [1;34m.../assignments/docker/docker-prometheus/solution [0;36m([1;31mmain [1;33m✗[0;36m) [0m$ docker logs [7m3a65079a53c7[27m3a65079a53c7
+[?2004l2022/11/25 10:59:40 error while reading the file "/csvserver/inputdata": open /csvserver/inputdata: no such file or directory
+[?2004h[0;32m@vigneshsweekaran [0m➜ [1;34m.../assignments/docker/docker-prometheus/solution [0;36m([1;31mmain [1;33m✗[0;36m) [0m$ [K[0;32m@vigneshsweekaran [0m➜ [1;34m.../assignments/docker/docker-prometheus/solution [0;36m([1;31mmain [1;33m✗[0;36m) [0m$ [K[0;32m@vigneshsweekaran [0m➜ [1;34m.../assignments/docker/docker-prometheus/solution [0;36m([1;31mmain [1;33m✗[0;36m) [0m$ [K[0;32m@vigneshsweekaran [0m➜ [1;34m.../assignments/docker/docker-prometheus/solution [0;36m([1;31mmain [1;33m✗[0;36m) [0m$ [K[0;32m@vigneshsweekaran [0m➜ [1;34m.../assignments/docker/docker-prometheus/solution [0;36m([1;31mmain [1;33m✗[0;36m) [0m$ chmod +x ./gencsv.sh 
+[?2004l[?2004h[0;32m@vigneshsweekaran [0m➜ [1;34m.../assignments/docker/docker-prometheus/solution [0;36m([1;31mmain [1;33m✗[0;36m) [0m$ ./gencsv.sh 
+[?2004l{1..10}
+[?2004h[0;32m@vigneshsweekaran [0m➜ [1;34m.../assignments/docker/docker-prometheus/solution [0;36m([1;31mmain [1;33m✗[0;36m) [0m$ ./gencsv.sh 
+[?2004l{1..NO_OF_ENTRIES}
+[?2004h[0;32m@vigneshsweekaran [0m➜ [1;34m.../assignments/docker/docker-prometheus/solution [0;36m([1;31mmain [1;33m✗[0;36m) [0m$ ./gencsv.sh 
+[?2004l{1..10}
+[?2004h[0;32m@vigneshsweekaran [0m➜ [1;34m.../assignments/docker/docker-prometheus/solution [0;36m([1;31mmain [1;33m✗[0;36m) [0m$ ./gencsv.sh 
+[?2004l{1..10}
+[?2004h[0;32m@vigneshsweekaran [0m➜ [1;34m.../assignments/docker/docker-prometheus/solution [0;36m([1;31mmain [1;33m✗[0;36m) [0m$ ./gencsv.sh 
+[?2004l./gencsv.sh: line 7: syntax error near unexpected token `echo'
+./gencsv.sh: line 7: `echo $i'
+[?2004h[0;32m@vigneshsweekaran [1;31m➜ [1;34m.../assignments/docker/docker-prometheus/solution [0;36m([1;31mmain [1;33m✗[0;36m) [0m$ ./gencsv.sh 
+[?2004l1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+[?2004h[0;32m@vigneshsweekaran [0m➜ [1;34m.../assignments/docker/docker-prometheus/solution [0;36m([1;31mmain [1;33m✗[0;36m) [0m$ ./gencsv.sh 
+[?2004l[?2004h[0;32m@vigneshsweekaran [0m➜ [1;34m.../assignments/docker/docker-prometheus/solution [0;36m([1;31mmain [1;33m✗[0;36m) [0m$ cat inputFile 
+[?2004l1,27268
+2,6422
+3,6645
+4,21768
+5,29772
+6,24845
+7,7809
+8,27076
+9,13746
+10,19689
+[?2004h[0;32m@vigneshsweekaran [0m➜ [1;34m.../assignments/docker/docker-prometheus/solution [0;36m([1;31mmain [1;33m✗[0;36m) [0m$ cat inputFile 
+[?2004l1,27268
+2,6422
+3,6645
+4,21768
+5,29772
+6,24845
+7,7809
+8,27076
+9,13746
+10,19689
+[?2004h[0;32m@vigneshsweekaran [0m➜ [1;34m.../assignments/docker/docker-prometheus/solution [0;36m([1;31mmain [1;33m✗[0;36m) [0m$ cat inputFile [2P./gencsv.sh[C
+[?2004l[?2004h[0;32m@vigneshsweekaran [0m➜ [1;34m.../assignments/docker/docker-prometheus/solution [0;36m([1;31mmain [1;33m✗[0;36m) [0m$ cat inputFile 
+[?2004l1,27268
+2,6422
+3,6645
+4,21768
+5,29772
+6,24845
+7,7809
+8,27076
+9,13746
+10,19689
+1, 2038
+2, 12923
+3, 28513
+4, 933
+5, 139
+6, 31752
+7, 7245
+8, 20142
+9, 6161
+10, 28328
+[?2004h[0;32m@vigneshsweekaran [0m➜ [1;34m.../assignments/docker/docker-prometheus/solution [0;36m([1;31mmain [1;33m✗[0;36m) [0m$ cat inputFile [2P./gencsv.sh[C[2@cat inputFile[C[2P./gencsv.sh[C
+[?2004l[?2004h[0;32m@vigneshsweekaran [0m➜ [1;34m.../assignments/docker/docker-prometheus/solution [0;36m([1;31mmain [1;33m✗[0;36m) [0m$ cat inputFile 
+[?2004l10, 32710
+[?2004h[0;32m@vigneshsweekaran [0m➜ [1;34m.../assignments/docker/docker-prometheus/solution [0;36m([1;31mmain [1;33m✗[0;36m) [0m$ cat inputFile 
+[?2004l10, 32710
+[?2004h[0;32m@vigneshsweekaran [0m➜ [1;34m.../assignments/docker/docker-prometheus/solution [0;36m([1;31mmain [1;33m✗[0;36m) [0m$ cat inputFile [2P./gencsv.sh[C
+[?2004l[?2004h[0;32m@vigneshsweekaran [0m➜ [1;34m.../assignments/docker/docker-prometheus/solution [0;36m([1;31mmain [1;33m✗[0;36m) [0m$ cat inputFile 
+[?2004l1, 15367
+2, 5222
+3, 5590
+4, 30466
+5, 19867
+6, 31386
+7, 16218
+8, 21085
+9, 31340
+10, 19897
+[?2004h[0;32m@vigneshsweekaran [0m➜ [1;34m.../assignments/docker/docker-prometheus/solution [0;36m([1;31mmain [1;33m✗[0;36m) [0m$ cat inputFile [2P./gencsv.sh[C
+[?2004l[?2004h[0;32m@vigneshsweekaran [0m➜ [1;34m.../assignments/docker/docker-prometheus/solution [0;36m([1;31mmain [1;33m✗[0;36m) [0m$ cat inputFile 
+[?2004l0, 27455
+1, 9037
+2, 31784
+3, 21285
+4, 7912
+5, 18518
+6, 31293
+7, 21642
+8, 27860
+9, 26353
+10, 2483
+[?2004h[0;32m@vigneshsweekaran [0m➜ [1;34m.../assignments/docker/docker-prometheus/solution [0;36m([1;31mmain [1;33m✗[0;36m) [0m$ cat inputFile [2P./gencsv.sh[C
+[?2004l[?2004h[0;32m@vigneshsweekaran [0m➜ [1;34m.../assignments/docker/docker-prometheus/solution [0;36m([1;31mmain [1;33m✗[0;36m) [0m$ cat inputFile 
+[?2004l0, 14786
+1, 27418
+2, 3675
+3, 29477
+4, 24720
+5, 6493
+6, 5249
+7, 2824
+8, 11649
+9, 22163
+[?2004h[0;32m@vigneshsweekaran [0m➜ [1;34m.../assignments/docker/docker-prometheus/solution [0;36m([1;31mmain [1;33m✗[0;36m) [0m$ docker ps -a
+[?2004lCONTAINER ID   IMAGE                           COMMAND                  CREATED          STATUS                      PORTS     NAMES
+3a65079a53c7   infracloudio/csvserver:latest   "/csvserver/csvserver"   17 minutes ago   Exited (1) 17 minutes ago             recursing_mestorf
+[?2004h[0;32m@vigneshsweekaran [0m➜ [1;34m.../assignments/docker/docker-prometheus/solution [0;36m([1;31mmain [1;33m✗[0;36m) [0m$ docker rm -f [7m3a65079a53c7[27m3a65079a53c7
+[?2004l3a65079a53c7
+[?2004h[0;32m@vigneshsweekaran [0m➜ [1;34m.../assignments/docker/docker-prometheus/solution [0;36m([1;31mmain [1;33m✗[0;36m) [0m$ docker ps -a
+[?2004lCONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+[?2004h[0;32m@vigneshsweekaran [0m➜ [1;34m.../assignments/docker/docker-prometheus/solution [0;36m([1;31mmain [1;33m✗[0;36m) [0m$ 
+[?2004l[?2004h[0;32m@vigneshsweekaran [0m➜ [1;34m.../assignments/docker/docker-prometheus/solution [0;36m([1;31mmain [1;33m✗[0;36m) [0m$ 
+[?2004l[?2004h[0;32m@vigneshsweekaran [0m➜ [1;34m.../assignments/docker/docker-prometheus/solution [0;36m([1;31mmain [1;33m✗[0;36m) [0m$ 
+[?2004l[?2004h[0;32m@vigneshsweekaran [0m➜ [1;34m.../assignments/docker/docker-prometheus/solution [0;36m([1;31mmain [1;33m✗[0;36m) [0m$ 
+[?2004l[?2004h[0;32m@vigneshsweekaran [0m➜ [1;34m.../assignments/docker/docker-prometheus/solution [0;36m([1;31mmain [1;33m✗[0;36m) [0m$ 
+[?2004l[?2004h[0;32m@vigneshsweekaran [0m➜ [1;34m.../assignments/docker/docker-prometheus/solution [0;36m([1;31mmain [1;33m✗[0;36m) [0m$ [7mdocker run -d -v ./inputFile:/csvserver/[27m[7mi[27m[7mnputdata infracloudio/csvserver:latest[27m[A[0;32m@vigneshsweekaran [0m➜ [1;34m.../assignments/docker/docker-prometheus/solution [0;36m([1;31mmain [1;33m✗[0;36m) [0m$ docker run -d -v ./inputFile:/csvserver/inputdata infracloudio/csvserver:latest
+[?2004ldocker: Error response from daemon: create ./inputFile: "./inputFile" includes invalid characters for a local volume name, only "[a-zA-Z0-9][a-zA-Z0-9_.-]" are allowed. If you intended to pass a host directory, use absolute path.
+See 'docker run --help'.
+[?2004h[0;32m@vigneshsweekaran [1;31m➜ [1;34m.../assignments/docker/docker-prometheus/solution [0;36m([1;31mmain [1;33m✗[0;36m) [0m$ [7mdocker run -d -v ${pwd}/inputFile:/csvse[27m[7mr[27m[7mver/inputdata infracloudio/csvserver:latest[27m[A[0;32m@vigneshsweekaran [1;31m➜ [1;34m.../assignments/docker/docker-prometheus/solution [0;36m([1;31mmain [1;33m✗[0;36m) [0m$ docker run -d -v ${pwd}/inputFile:/csvserver/inputdata infracloudio/csvserver:latest
+[?2004l2f97f97c490021d000cac3c68d8a707de049282b975e7d6e02b4f287a6fe9655
+[?2004h[0;32m@vigneshsweekaran [0m➜ [1;34m.../assignments/docker/docker-prometheus/solution [0;36m([1;31mmain [1;33m✗[0;36m) [0m$ docker ps
+[?2004lCONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+[?2004h[0;32m@vigneshsweekaran [0m➜ [1;34m.../assignments/docker/docker-prometheus/solution [0;36m([1;31mmain [1;33m✗[0;36m) [0m$ docker ps -a
+[?2004lCONTAINER ID   IMAGE                           COMMAND                  CREATED         STATUS                     PORTS     NAMES
+2f97f97c4900   infracloudio/csvserver:latest   "/csvserver/csvserver"   7 seconds ago   Exited (1) 6 seconds ago             sharp_euclid
+[?2004h[0;32m@vigneshsweekaran [0m➜ [1;34m.../assignments/docker/docker-prometheus/solution [0;36m([1;31mmain [1;33m✗[0;36m) [0m$ docker logs [7m2f97f97c4900[27m2f97f97c4900
+[?2004l2022/11/25 11:20:48 error while reading the file "/csvserver/inputdata": read /csvserver/inputdata: is a directory
+[?2004h[0;32m@vigneshsweekaran [0m➜ [1;34m.../assignments/docker/docker-prometheus/solution [0;36m([1;31mmain [1;33m✗[0;36m) [0m$ docker logs 2f97f97c4900ps -a[K[Krun -d -v ${pwd}/inputFile:/csvserver/inputdata infracloudio/csvserver:latest
+[?2004l9dd3f1d556b459881f77602fc4d803d3966b7c506e4bffd31356798e5109eebf
+[?2004h[0;32m@vigneshsweekaran [0m➜ [1;34m.../assignments/docker/docker-prometheus/solution [0;36m([1;31mmain [1;33m✗[0;36m) [0m$ docker ps
+[?2004lCONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+[?2004h[0;32m@vigneshsweekaran [0m➜ [1;34m.../assignments/docker/docker-prometheus/solution [0;36m([1;31mmain [1;33m✗[0;36m) [0m$ docker ps -a
+[?2004lCONTAINER ID   IMAGE                           COMMAND                  CREATED         STATUS                     PORTS     NAMES
+9dd3f1d556b4   infracloudio/csvserver:latest   "/csvserver/csvserver"   6 seconds ago   Exited (1) 5 seconds ago             priceless_germain
+2f97f97c4900   infracloudio/csvserver:latest   "/csvserver/csvserver"   2 minutes ago   Exited (1) 2 minutes ago             sharp_euclid
+[?2004h[0;32m@vigneshsweekaran [0m➜ [1;34m.../assignments/docker/docker-prometheus/solution [0;36m([1;31mmain [1;33m✗[0;36m) [0m$ docker logs [7m9dd3f1d556b4[27m9dd3f1d556b4
+[?2004l2022/11/25 11:23:28 error while reading the file "/csvserver/inputdata": read /csvserver/inputdata: is a directory
+[?2004h[0;32m@vigneshsweekaran [0m➜ [1;34m.../assignments/docker/docker-prometheus/solution [0;36m([1;31mmain [1;33m✗[0;36m) [0m$ cat inputFile [K[K[K[K[K[K[K[K[K[K[K[K[K[Kls
+[?2004lcapture.txt  [0m[01;32mgencsv.sh[0m  inputFile  part-1-cmd
+[?2004h[0;32m@vigneshsweekaran [0m➜ [1;34m.../assignments/docker/docker-prometheus/solution [0;36m([1;31mmain [1;33m✗[0;36m) [0m$ ./gencsv.sh 
+[?2004l[?2004h[0;32m@vigneshsweekaran [0m➜ [1;34m.../assignments/docker/docker-prometheus/solution [0;36m([1;31mmain [1;33m✗[0;36m) [0m$ ls
+[?2004lcapture.txt  [0m[01;32mgencsv.sh[0m  inputdata  inputFile  part-1-cmd
+[?2004h[0;32m@vigneshsweekaran [0m➜ [1;34m.../assignments/docker/docker-prometheus/solution [0;36m([1;31mmain [1;33m✗[0;36m) [0m$ cat inputdata 
+[?2004l0, 23984
+1, 27904
+2, 718
+3, 25082
+4, 24916
+5, 15378
+6, 17331
+7, 26140
+8, 24805
+9, 18453
+[?2004h[0;32m@vigneshsweekaran [0m➜ [1;34m.../assignments/docker/docker-prometheus/solution [0;36m([1;31mmain [1;33m✗[0;36m) [0m$ cat inputdata ls[K./gencsv.sh ls[K./gencsv.sh ls[Kdocker logs 9dd3f1d556b4ls[K./gencsv.sh ls[K./gencsv.sh ls[Kdocker logs 9dd3f1d556b4ps -a[Klogs 9dd3f1d556b4ls[K./gencsv.sh ls[Kcat inputdata [Kcat inputdata ls[K./gencsv.sh ls[Kdocker logs 9dd3f1d556b4ps -a[K[Krun -d -v ${pwd}/inputFile:/csvserver/inputdata infracloudio/csvserver:latest
+[?2004l66a4b49d296074ed715e2f2cb4b37d692a2ee49d3f811e055730c3afec784134
+[?2004h[0;32m@vigneshsweekaran [0m➜ [1;34m.../assignments/docker/docker-prometheus/solution [0;36m([1;31mmain [1;33m✗[0;36m) [0m$ docker ps
+[?2004lCONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+[?2004h[0;32m@vigneshsweekaran [0m➜ [1;34m.../assignments/docker/docker-prometheus/solution [0;36m([1;31mmain [1;33m✗[0;36m) [0m$ docker ps -a
+[?2004lCONTAINER ID   IMAGE                           COMMAND                  CREATED              STATUS                          PORTS     NAMES
+66a4b49d2960   infracloudio/csvserver:latest   "/csvserver/csvserver"   5 seconds ago        Exited (1) 4 seconds ago                  sharp_shirley
+9dd3f1d556b4   infracloudio/csvserver:latest   "/csvserver/csvserver"   About a minute ago   Exited (1) About a minute ago             priceless_germain
+2f97f97c4900   infracloudio/csvserver:latest   "/csvserver/csvserver"   4 minutes ago        Exited (1) 4 minutes ago                  sharp_euclid
+[?2004h[0;32m@vigneshsweekaran [0m➜ [1;34m.../assignments/docker/docker-prometheus/solution [0;36m([1;31mmain [1;33m✗[0;36m) [0m$ docker logs [7m66a4b49d2960[27m66a4b49d2960
+[?2004l2022/11/25 11:25:12 error while reading the file "/csvserver/inputdata": read /csvserver/inputdata: is a directory
+[?2004h[0;32m@vigneshsweekaran [0m➜ [1;34m.../assignments/docker/docker-prometheus/solution [0;36m([1;31mmain [1;33m✗[0;36m) [0m$ docker logs 66a4b49d2960ps -a[K[Krun -d -v ${pwd}/inputFile:/csvserver/inputdata infracloudio/csvserver:latest^C[?2004l[?2004h[?2004l
+[?2004h[0;32m@vigneshsweekaran [1;31m➜ [1;34m.../assignments/docker/docker-prometheus/solution [0;36m([1;31mmain [1;33m✗[0;36m) [0m$ [7mdocker run -d -v ${pwd}/inputdata:/csvse[27m[7mr[27m[7mver/inputdata infracloudio/csvserver:latest[27m[A[0;32m@vigneshsweekaran [1;31m➜ [1;34m.../assignments/docker/docker-prometheus/solution [0;36m([1;31mmain [1;33m✗[0;36m) [0m$ docker run -d -v ${pwd}/inputdata:/csvserver/inputdata infracloudio/csvserver:latest
+[?2004ld00de5767c836bbf23e4980a3751570c64974f4449ed3abf83a19812f3bc4ea4
+[?2004h[0;32m@vigneshsweekaran [0m➜ [1;34m.../assignments/docker/docker-prometheus/solution [0;36m([1;31mmain [1;33m✗[0;36m) [0m$ docker ps
+[?2004lCONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+[?2004h[0;32m@vigneshsweekaran [0m➜ [1;34m.../assignments/docker/docker-prometheus/solution [0;36m([1;31mmain [1;33m✗[0;36m) [0m$ docker ps -a
+[?2004lCONTAINER ID   IMAGE                           COMMAND                  CREATED          STATUS                      PORTS     NAMES
+d00de5767c83   infracloudio/csvserver:latest   "/csvserver/csvserver"   6 seconds ago    Exited (1) 4 seconds ago              hopeful_spence
+66a4b49d2960   infracloudio/csvserver:latest   "/csvserver/csvserver"   52 seconds ago   Exited (1) 51 seconds ago             sharp_shirley
+9dd3f1d556b4   infracloudio/csvserver:latest   "/csvserver/csvserver"   2 minutes ago    Exited (1) 2 minutes ago              priceless_germain
+2f97f97c4900   infracloudio/csvserver:latest   "/csvserver/csvserver"   5 minutes ago    Exited (1) 5 minutes ago              sharp_euclid
+[?2004h[0;32m@vigneshsweekaran [0m➜ [1;34m.../assignments/docker/docker-prometheus/solution [0;36m([1;31mmain [1;33m✗[0;36m) [0m$ docker logs [7md00de5767c83[27md00de5767c83
+[?2004l2022/11/25 11:25:59 error while reading the file "/csvserver/inputdata": read /csvserver/inputdata: is a directory
+[?2004h[0;32m@vigneshsweekaran [0m➜ [1;34m.../assignments/docker/docker-prometheus/solution [0;36m([1;31mmain [1;33m✗[0;36m) [0m$ [7mdocker run -d -v ${pwd}/inputdata:/csvse[27m[7mr[27m[7mver infracloudio/csvserver:latest[27m[A[0;32m@vigneshsweekaran [0m➜ [1;34m.../assignments/docker/docker-prometheus/solution [0;36m([1;31mmain [1;33m✗[0;36m) [0m$ docker run -d -v ${pwd}/inputdata:/csvserver infracloudio/csvserver:latest
+[?2004lb582214bf0fefa2d1b54ee9e8c9764d0f51ea8cb39671a7f9629b65630231fd4
+docker: Error response from daemon: failed to create shim: OCI runtime create failed: runc create failed: unable to start container process: exec: "/csvserver/csvserver": stat /csvserver/csvserver: no such file or directory: unknown.
+[?2004h[0;32m@vigneshsweekaran [1;31m➜ [1;34m.../assignments/docker/docker-prometheus/solution [0;36m([1;31mmain [1;33m✗[0;36m) [0m$ [7mdocker run -d -v $(pwd)/inputdata:/csvse[27m[7mr[27m[7mver/ infracloudio/csvserver:latest[27m[A[0;32m@vigneshsweekaran [1;31m➜ [1;34m.../assignments/docker/docker-prometheus/solution [0;36m([1;31mmain [1;33m✗[0;36m) [0m$ docker run -d -v $(pwd)/inputdata:/csvserver/ infracloudio/csvserver:latest
+[?2004l3dc8119baed9971d828e740422d0930ed86d952e705460380de7e4703418717f
+docker: Error response from daemon: failed to create shim: OCI runtime create failed: runc create failed: unable to start container process: error during container init: error mounting "/workspaces/assignments/docker/docker-prometheus/solution/inputdata" to rootfs at "/csvserver": mount /workspaces/assignments/docker/docker-prometheus/solution/inputdata:/csvserver (via /proc/self/fd/6), flags: 0x5000: not a directory: unknown: Are you trying to mount a directory onto a file (or vice-versa)? Check if the specified host path exists and is the expected type.
+[?2004h[0;32m@vigneshsweekaran [1;31m➜ [1;34m.../assignments/docker/docker-prometheus/solution [0;36m([1;31mmain [1;33m✗[0;36m) [0m$ ll
+[?2004lbash: ll: command not found
+[?2004h[0;32m@vigneshsweekaran [1;31m➜ [1;34m.../assignments/docker/docker-prometheus/solution [0;36m([1;31mmain [1;33m✗[0;36m) [0m$ ls
+[?2004lcapture.txt  [0m[01;32mgencsv.sh[0m  inputdata  inputFile  part-1-cmd
+[?2004h[0;32m@vigneshsweekaran [0m➜ [1;34m.../assignments/docker/docker-prometheus/solution [0;36m([1;31mmain [1;33m✗[0;36m) [0m$ cat inputdata 
+[?2004l0, 23984
+1, 27904
+2, 718
+3, 25082
+4, 24916
+5, 15378
+6, 17331
+7, 26140
+8, 24805
+9, 18453
+[?2004h[0;32m@vigneshsweekaran [0m➜ [1;34m.../assignments/docker/docker-prometheus/solution [0;36m([1;31mmain [1;33m✗[0;36m) [0m$ ls -ltr
+[?2004ltotal 32
+-rw-rw-rw- 1 vscode vscode    86 Nov 25 11:11 inputFile
+-rwxrwxrwx 1 vscode vscode   165 Nov 25 11:23 [0m[01;32mgencsv.sh[0m
+-rw-rw-rw- 1 vscode vscode    88 Nov 25 11:24 inputdata
+-rw-rw-rw- 1 vscode vscode 16384 Nov 25 11:26 capture.txt
+-rw-rw-rw- 1 vscode vscode    75 Nov 25 11:27 part-1-cmd
+[?2004h[0;32m@vigneshsweekaran [0m➜ [1;34m.../assignments/docker/docker-prometheus/solution [0;36m([1;31mmain [1;33m✗[0;36m) [0m$ [7mdocker run -d -v $(pwd)/inputdata:/csvse[27m[7mr[27m[7mver/inputdata infracloudio/csvserver:latest[27m[A[0;32m@vigneshsweekaran [0m➜ [1;34m.../assignments/docker/docker-prometheus/solution [0;36m([1;31mmain [1;33m✗[0;36m) [0m$ docker run -d -v $(pwd)/inputdata:/csvserver/inputdata infracloudio/csvserver:latest
+[?2004l9d9bc4e1a5c3436421b445da2487227f6dc8cfbfe01267afb6239589b788a2a8
+[?2004h[0;32m@vigneshsweekaran [0m➜ [1;34m.../assignments/docker/docker-prometheus/solution [0;36m([1;31mmain [1;33m✗[0;36m) [0m$ docker ps
+[?2004lCONTAINER ID   IMAGE                           COMMAND                  CREATED         STATUS         PORTS      NAMES
+9d9bc4e1a5c3   infracloudio/csvserver:latest   "/csvserver/csvserver"   4 seconds ago   Up 2 seconds   9300/tcp   musing_blackburn
+[?2004h[0;32m@vigneshsweekaran [0m➜ [1;34m.../assignments/docker/docker-prometheus/solution [0;36m([1;31mmain [1;33m✗[0;36m) [0m$ 
+[?2004l[?2004h[0;32m@vigneshsweekaran [0m➜ [1;34m.../assignments/docker/docker-prometheus/solution [0;36m([1;31mmain [1;33m✗[0;36m) [0m$ 
+[?2004l[?2004h[0;32m@vigneshsweekaran [0m➜ [1;34m.../assignments/docker/docker-prometheus/solution [0;36m([1;31mmain [1;33m✗[0;36m) [0m$ 
+[?2004l[?2004h[0;32m@vigneshsweekaran [0m➜ [1;34m.../assignments/docker/docker-prometheus/solution [0;36m([1;31mmain [1;33m✗[0;36m) [0m$ 
+[?2004l[?2004h[0;32m@vigneshsweekaran [0m➜ [1;34m.../assignments/docker/docker-prometheus/solution [0;36m([1;31mmain [1;33m✗[0;36m) [0m$ 
+[?2004l[?2004h[0;32m@vigneshsweekaran [0m➜ [1;34m.../assignments/docker/docker-prometheus/solution [0;36m([1;31mmain [1;33m✗[0;36m) [0m$ docker psrun -d -v $(pwd)/inputdata:/csvserver/inputdata infracloudio/csvserver:latest
+[?2004l9630916a6fd0348b51d640e67d19888109ab8c6220425f0ac59b4c207dcd8b4a
+[?2004h[0;32m@vigneshsweekaran [0m➜ [1;34m.../assignments/docker/docker-prometheus/solution [0;36m([1;31mmain [1;33m✗[0;36m) [0m$ docker run -d -v $(pwd)/inputdata:/csvserver/inputdata infracloudio/csvserver:latest[A[0;32m@vigneshsweekaran [0m➜ [1;34m.../assignments/docker/docker-prometheus/solution [0;36m([1;31mmain [1;33m✗[0;36m) [0m$ [C[C[C[C[C[C[Cps[K
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C
+[?2004lCONTAINER ID   IMAGE                           COMMAND                  CREATED          STATUS          PORTS      NAMES
+9630916a6fd0   infracloudio/csvserver:latest   "/csvserver/csvserver"   3 seconds ago    Up 2 seconds    9300/tcp   thirsty_wilbur
+9d9bc4e1a5c3   infracloudio/csvserver:latest   "/csvserver/csvserver"   15 seconds ago   Up 14 seconds   9300/tcp   musing_blackburn
+[?2004h[0;32m@vigneshsweekaran [0m➜ [1;34m.../assignments/docker/docker-prometheus/solution [0;36m([1;31mmain [1;33m✗[0;36m) [0m$ docker rm -rf $()p)s) )[1P)[1P)[1P)d)o)c)k)e)r) )p)s) )-)a)q)
+[?2004lunknown shorthand flag: 'r' in -rf
+See 'docker rm --help'.
+[?2004h[0;32m@vigneshsweekaran [1;31m➜ [1;34m.../assignments/docker/docker-prometheus/solution [0;36m([1;31mmain [1;33m✗[0;36m) [0m$ docker rm -rf $(docker ps -aq)[1P
+[?2004l9630916a6fd0
+9d9bc4e1a5c3
+3dc8119baed9
+b582214bf0fe
+d00de5767c83
+66a4b49d2960
+9dd3f1d556b4
+2f97f97c4900
+[?2004h[0;32m@vigneshsweekaran [0m➜ [1;34m.../assignments/docker/docker-prometheus/solution [0;36m([1;31mmain [1;33m✗[0;36m) [0m$ docker ps 

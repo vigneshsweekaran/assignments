@@ -1,0 +1,1 @@
+docker run -d -v $(pwd)/inputdata:/csvserver/inputdata infracloudio/csvserver:latest
