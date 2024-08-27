@@ -1,0 +1,23 @@
+image:
+  repository: flask-api
+  tag: 1
+
+service:
+  type: ClusterIP
+  port: 5000
+
+ingress:
+  enabled: true
+  annotations: {}
+  host: flask-api.local
+
+mysql:
+  image: mysql:8.0
+  username: cm9vdA==
+  password: cGFzc3dvcmQ=
+  database: bWVzc2FnZXNfZGI=
+  persistence:
+    enabled: true
+    size: 1Gi
+    storageClass: standard
+
